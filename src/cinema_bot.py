@@ -22,8 +22,8 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
-from src.movie_searcher import MovieSearcher
-from src.db import init_db, add_search, get_user_history, get_user_stats
+from movie_searcher import MovieSearcher
+from db import init_db, add_search, get_user_history, get_user_stats
 
 BOT_TOKEN = getenv("BOT_TOKEN")
 KINOPOISK_UNOFFICIAL_API_KEY = getenv("KINOPOISK_UNOFFICIAL_API_KEY")

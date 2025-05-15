@@ -47,5 +47,5 @@ poetry install
 ### Run:
 
 ```bash
-BOT_TOKEN=<token> KINOPOISK_UNOFFICIAL_API_KEY=<token> MOVIE_CAP=<int, default: 3> LINK_CAP=<int, default: 1> poetry run cinema_bot.py
+BOT_TOKEN=<token> KINOPOISK_UNOFFICIAL_API_KEY=<token> MOVIE_CAP=<int, default: 3> LINK_CAP=<int, default: 1> poetry run python cinema_bot.py
 ```

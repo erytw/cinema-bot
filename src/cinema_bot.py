@@ -205,7 +205,6 @@ async def show_stats_page(message_or_query, state: FSMContext):
     is_callback = isinstance(message_or_query, CallbackQuery)
     user_id = message_or_query.from_user.id
 
-    # Get stats
     page_size = 20
 
     async with async_session() as session:
@@ -300,7 +299,7 @@ async def movie_search_handler(message: Message, state: FSMContext) -> None:
 async def get_film_caption(film):
     """Generate caption text for a film."""
     if "error" in film:
-        return film["error"]
+        return film["error"], None, None
 
     caption = ""
     film_name = film.get("nameRu", film.get("nameEn", None))

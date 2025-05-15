@@ -120,6 +120,8 @@ async def show_history_page(message_or_query, state: FSMContext):
     is_callback = isinstance(message_or_query, CallbackQuery)
     user_id = message_or_query.from_user.id
 
+    logging.info("Showing history page to %s", user_id)
+
     page_size = 20
 
     async with async_session() as session:
@@ -204,6 +206,8 @@ async def show_stats_page(message_or_query, state: FSMContext):
 
     is_callback = isinstance(message_or_query, CallbackQuery)
     user_id = message_or_query.from_user.id
+
+    logging.info("Showing stats page to %s", user_id)
 
     page_size = 20
 

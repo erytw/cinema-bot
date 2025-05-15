@@ -275,8 +275,9 @@ async def movie_search_handler(message: Message, state: FSMContext) -> None:
         message.from_user.full_name,
         message.from_user.id,
     )
-    user_id = message.from_user.id  # type: ignore
-    query = message.text.strip()  # type: ignore
+    query: str = ""
+    if message.text:
+        query = message.text.strip()  # type: ignore
 
     film_info: list[dict] = []
     try:
@@ -295,9 +296,6 @@ async def movie_search_handler(message: Message, state: FSMContext) -> None:
     await state.update_data(page=0, query=query, film_info=film_info)
 
     await show_search_page(message, state)
-
-    async with async_session() as session:
-        await add_search(session, user_id, query)
 
 
 async def get_film_caption(film):
@@ -372,7 +370,7 @@ async def show_search_page(message_or_query, state: FSMContext):
         else:
             await message_or_query.answer(text, parse_mode=ParseMode.HTML)
         async with async_session() as session:
-            await add_search(session, user_id, query)
+            await add_search(session, user_id, query, "pizda")
         return
 
     total_pages = len(film_info)
